@@ -1,0 +1,42 @@
+{
+  "name": "dmt-software/laravel-import-reader",
+  "description": "import reader that can handles huge import files",
+  "keywords": [
+    "laravel",
+    "import",
+    "csv",
+    "xml",
+    "json"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bas de Mes",
+      "email": "bas@dmt-software.nl"
+    }
+  ],
+  "require": {
+    "dmt-software/import-reader": "^1.0",
+    "orchestra/testbench": "^6.18"
+  },
+  "autoload": {
+    "psr-4": {
+      "DMT\\Laravel\\Import\\Reader\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DMT\\Test\\Laravel\\Import\\Reader\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "DMT\\Laravel\\Import\\Reader\\Providers\\ImportReaderServiceProvider"
+      ],
+      "aliases": {
+        "ImportReader": "DMT\\Laravel\\Import\\Reader\\Facades\\ImportReader"
+      }
+    }
+  }
+}
