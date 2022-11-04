@@ -27,7 +27,7 @@ class ReaderErrorHandler implements ErrorHandler
 
     public function register(): void
     {
-        set_error_handler([$this, 'toException']);
+        $this->errorHandler = set_error_handler([$this, 'toException']);
 
         if ($this->exceptionHandler instanceof Handler) {
             $this->exceptionHandler->reportable(function (ExceptionInterface $exception) {
@@ -45,6 +45,11 @@ class ReaderErrorHandler implements ErrorHandler
         }
 
         return call_user_func($this->errorHandler, $code, $message, $file, $line, $context);
+    }
+
+    public function __destruct()
+    {
+        restore_error_handler();
     }
 
     /**
