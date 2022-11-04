@@ -16,8 +16,11 @@
     }
   ],
   "require": {
-    "dmt-software/import-reader": "^1.0",
-    "orchestra/testbench": "^6.18"
+    "dmt-software/import-reader": "^1.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.25",
+    "laravel/legacy-factories": "^1.0.4"
   },
   "autoload": {
     "psr-4": {
