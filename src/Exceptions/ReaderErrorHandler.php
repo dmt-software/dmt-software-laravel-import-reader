@@ -27,7 +27,7 @@ class ReaderErrorHandler implements ErrorHandler
 
     public function register(): void
     {
-        $this->errorHandler = set_error_handler([$this, 'toException']);
+        $this->errorHandler = set_error_handler([$this, 'handleError']);
 
         if ($this->exceptionHandler instanceof Handler) {
             $this->exceptionHandler->reportable(function (ExceptionInterface $exception) {
@@ -36,7 +36,7 @@ class ReaderErrorHandler implements ErrorHandler
         }
     }
 
-    public function toException($code, $message, $file, $line, $context)
+    public function handleError($code, $message, $file, $line, $context)
     {
         $this->fixTypeHintNoticeForPhp7($code, $message);
 
