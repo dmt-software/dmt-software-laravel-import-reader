@@ -5,7 +5,7 @@ Laravel bridge for `dmt-software/import-reader` to iterate over the contents of
 
 ## Support
 
-This package is tested on and requires laravel <= 8.0.
+This package is tested on and requires laravel >= 8.0.
 
 ## Installation
 
