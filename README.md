@@ -50,8 +50,7 @@ error handler. See the _config/reader.php_ file for their usage or the
 
 A file called _items.json_ contains the following data:
 
-```json
-// file: items.json
+```js
 [
   { 
     "id": 1,
