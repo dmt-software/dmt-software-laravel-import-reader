@@ -42,7 +42,7 @@ return [
     | reader to a Closure that returns its own reader handler.
     |
     | Example:
-    |   MyReader => function ($file, $config, $sanitizers): HandlerInterface {}
+    |   MyHandler => function ($file, $config, $sanitizers): HandlerInterface {}
     |
     */
 
@@ -61,6 +61,9 @@ return [
    |
    | By default the ReaderErrorHandler is used to ensure the errors are logged
    | without stopping the reader.
+   |
+   | Empty this entry if you don't want to override the error handling during
+   | reader usage.
    |
    */
 
