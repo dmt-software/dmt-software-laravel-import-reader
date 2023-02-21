@@ -34,18 +34,6 @@ class ImportReaderServiceProviderTest extends TestCase
         $this->assertInstanceOf(HandlerFactory::class, App::get(HandlerFactory::class));
     }
 
-    public function testConfigureExtension()
-    {
-        $this->configureImportReaderServiceProvider([
-            'extensions' => ['php' => CsvReaderHandler::class]
-        ]);
-
-        $this->assertInstanceOf(
-            CsvReaderHandler::class,
-            ImportReader::createHandler(__FILE__, [])
-        );
-    }
-
     public function testConfigureSanitizers()
     {
         $appendSanitizer = new class implements SanitizerInterface {

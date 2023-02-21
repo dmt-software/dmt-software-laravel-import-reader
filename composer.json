@@ -1,6 +1,6 @@
 {
   "name": "dmt-software/laravel-import-reader",
-  "description": "import reader that can handles huge import files",
+  "description": "import reader that can handles huge imports",
   "keywords": [
     "laravel",
     "import",
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-    "dmt-software/import-reader": "^1.0"
+    "dmt-software/import-reader": "^2.0"
   },
   "require-dev": {
     "orchestra/testbench": "^6.25",

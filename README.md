@@ -1,7 +1,7 @@
 # Laravel Import Reader
 
 Laravel bridge for `dmt-software/import-reader` to iterate over the contents of
-(huge) files.
+(huge) imports.
 
 ## Support
 

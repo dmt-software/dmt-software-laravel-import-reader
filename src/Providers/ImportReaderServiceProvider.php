@@ -2,6 +2,8 @@
 
 namespace DMT\Laravel\Import\Reader\Providers;
 
+use Closure;
+use DMT\Import\Reader\Handlers\Factories\CallbackHandlerFactory;
 use DMT\Import\Reader\Handlers\HandlerFactory;
 use DMT\Import\Reader\ReaderBuilder;
 use DMT\Laravel\Import\Reader\Contracts\ErrorHandler;
@@ -23,10 +25,6 @@ class ImportReaderServiceProvider extends ServiceProvider
         $this->app->bind(ReaderBuilder::class, function () {
             $builder = new ReaderBuilder($this->app->make(HandlerFactory::class));
 
-            foreach (config('reader.extensions') as $extension => $handler) {
-                $builder->addExtensionToHandler($extension, $handler);
-            }
-
             foreach (config('reader.sanitizers') as $configKey => $sanitizerClassName) {
                 $builder->addSanitizer($configKey, $sanitizerClassName);
             }
@@ -38,7 +36,10 @@ class ImportReaderServiceProvider extends ServiceProvider
             $factory = new HandlerFactory();
 
             foreach (config('reader.handler_callbacks', []) as $handler => $callback) {
-                $factory->addInitializeHandlerCallback($handler, $callback);
+                if ($callback instanceof Closure) {
+                    $callback = new CallbackHandlerFactory($callback);
+                }
+                $factory->addInitializeHandlerFactory($handler, $callback);
             }
 
             return $factory;

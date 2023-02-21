@@ -6,20 +6,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | File extensions
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify which reader handler will be used based on the file
-    | extension.
-    |
-    | The extensions csv, json and xml are mapped to their handlers by default.
-    |
-    */
-
-    'extensions' => [],
-
-    /*
-    |--------------------------------------------------------------------------
     | Sanitizers
     |--------------------------------------------------------------------------
     |
@@ -37,12 +23,17 @@ return [
     | Custom reader handlers
     |--------------------------------------------------------------------------
     |
-    | By default custom readers will use the PHP internal SplFileObject to read
-    | through a file line by line. This can be overridden by mapping a custom
-    | reader to a Closure that returns its own reader handler.
+    | Here you can add a factory that initiate a custom handler. These handlers
+    | must implement the HandlerFactoryInterface or contain a Closure that can
+    | initiate the handler.
     |
     | Example:
-    |   MyHandler => function ($file, $config, $sanitizers): HandlerInterface {}
+    |   SomeHandler => new SomeHandlerFactory(),
+    |   MyHandler::class => fn (
+    |      string|resource $source,
+    |      array $config,
+    |      array $sanitizers
+    |   ) => new MyHandler($source, $sanitizers),
     |
     */
 
