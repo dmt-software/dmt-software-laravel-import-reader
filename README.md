@@ -27,21 +27,7 @@ To publish the configuration file:
 
 ## Configuration
 
-The extensions entry within the configuration can be used to autodetect a 
-_readerHandler_ by mapping the file extension to the requested handler:
-
-```php
-return [
-    'extensions' => [
-        'cxml' => DMT\Import\Reader\Handlers\XmlReaderHandler::class,     
-    ],
-];
-```
-By default json, xml and csv are autodetected. 
-
-### Customization
-
-The configuration also has entries for custom sanitizers, handlers and a custom
+The configuration has entries for custom sanitizers, handlers and a custom
 error handler. See the _config/reader.php_ file for their usage or the 
 `dmt-software/import-reader` documentation.
 
